@@ -4942,6 +4942,7 @@ void do_wizutil(CHAR_DATA *ch, char *argument, int/* cmd*/, int subcmd)
 
 void print_zone_to_buf(char **bufptr, zone_rnum zone)
 {
+	medit_save_to_disk(zone);
 	const size_t BUFFER_SIZE = 1024;
 	char tmpstr[BUFFER_SIZE];
 	snprintf(tmpstr, BUFFER_SIZE,

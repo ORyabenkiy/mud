@@ -1385,7 +1385,7 @@ void MobileFile::parse_enhanced_mob(int i, int nr)
 
 			if (!mob_proto[i].get_role_bits().any())
 			{
-				mob_proto[i].mob_specials.MaxFactor = mob_proto[i].get_level() / 9;
+				mob_proto[i].mob_specials.MaxFactor = mob_proto[i].get_level() / 7;
 //				log("SET maxfactor %d level mobs %d vnum %d  name %s", mob_proto[i].mob_specials.MaxFactor, mob_proto[i].get_level(), nr, mob_proto[i].get_npc_name().c_str());
 			}
 //			if (mob_proto[i].mob_specials.MaxFactor > 0  && mob_proto[i].get_role_bits().any())
@@ -1465,7 +1465,15 @@ void MobileFile::interpret_espec(const char *keyword, const char *value, int i, 
 		{
 			GET_RESIST(mob_proto + i, kk) = MIN(300, MAX(-1000, atoi(array_string[kk].c_str())));
 		}
-
+		short int resist = 0;
+		if (GET_LEVEL(mob_proto + i) >= 30){
+			resist = ((GET_LEVEL(mob_proto + i) - 30) /1.3) + 5;
+		}
+		if (mob_proto[i].get_role_bits().any())
+			resist += 5;
+		GET_RESIST(mob_proto + i, DARK_RESISTANCE) = resist;
+		sprintf(buf, "RESIST: level = %d param = %d", GET_LEVEL(mob_proto + i), resist);
+		log("%s", buf);
 
 /*		заготовка парса резистов у моба при загрузке мада, чтоб в след раз не придумывать
 		if (GET_RESIST(mob_proto + i, 4) > 49 && !mob_proto[i].get_role(MOB_ROLE_BOSS)) // жизнь и не боссы
