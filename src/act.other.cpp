@@ -138,7 +138,19 @@ void do_quit(CHAR_DATA *ch, char *argument, int/* cmd*/, int subcmd)
 
 	if (IS_NPC(ch) || !ch->desc)
 		return;
-
+	for (int i = 0; i < NUM_WEARS; i++) {
+		if (SetSystem::is_norent_set(ch, (ch)->equipment[i])) {
+			send_to_char(ch, "Вы не можете выйти так как у вас %s!\r\n", OBJN((ch)->equipment[i], ch, 3));
+			return;
+		}
+	}
+	while (ch->carrying) {
+		OBJ_DATA *obj = ch->carrying;
+		if (SetSystem::is_norent_set(ch, obj)) {
+			send_to_char(ch, "Вы не можете выйти так как у вас %s!\r\n", OBJN(obj, ch, 3));
+			return;
+		}
+	}
 	if (subcmd != SCMD_QUIT)
 		send_to_char("Вам стоит набрать эту команду полностью во избежание недоразумений!\r\n", ch);
 	else if (GET_POS(ch) == POS_FIGHTING)
