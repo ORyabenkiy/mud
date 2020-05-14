@@ -139,15 +139,15 @@ void do_quit(CHAR_DATA *ch, char *argument, int/* cmd*/, int subcmd)
 	if (IS_NPC(ch) || !ch->desc)
 		return;
 	for (int i = 0; i < NUM_WEARS; i++) {
-		if (SetSystem::is_norent_set(ch, (ch)->equipment[i])) {
-			send_to_char(ch, "Вы не можете выйти так как у вас %s!\r\n", OBJN((ch)->equipment[i], ch, 3));
+		OBJ_DATA *obj = GET_EQ(ch, i);
+		if (obj && SetSystem::is_norent_set(ch, obj)) {
+			send_to_char(ch, "Вы не можете выйти из игры так как у вас есть одинокий предмет: %s.\r\n", OBJN(GET_EQ(ch, i), ch, 3));
 			return;
 		}
 	}
-	while (ch->carrying) {
-		OBJ_DATA *obj = ch->carrying;
+	for (auto obj = ch->carrying; obj; obj = next_obj) {
 		if (SetSystem::is_norent_set(ch, obj)) {
-			send_to_char(ch, "Вы не можете выйти так как у вас %s!\r\n", OBJN(obj, ch, 3));
+			send_to_char(ch, "Вы не можете выйти из игры так как у вас есть одинокий предмет: %s.\r\n", OBJN(obj, ch, 3));
 			return;
 		}
 	}
