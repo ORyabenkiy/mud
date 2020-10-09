@@ -305,16 +305,15 @@ void load(bool reload)
 			int mob_rnum = real_mobile(mob_vnum);
 			if (mob_rnum >= 0)
 			{
-				if (mob_index[mob_rnum].func
-					&& mob_index[mob_rnum].func != shop_ext)
-				{
+				if (mob_index[mob_rnum].func && mob_index[mob_rnum].func != shop_ext) {
 					snprintf(buf, MAX_STRING_LENGTH,
 						"...shopkeeper already with special (mob_vnum=%d)", mob_vnum);
 					mudlog(buf, CMP, LVL_IMMORT, SYSLOG, TRUE);
 				}
-				else
-				{
+				else {
 					mob_index[mob_rnum].func = shop_ext;
+					if (!mob_proto[mob_rnum].proto_script->empty())
+					    log("MOBTRIG: vnum %d, name %s", mob_vnum, mob_proto[mob_rnum].get_npc_name().c_str());
 				}
 			}
 			else

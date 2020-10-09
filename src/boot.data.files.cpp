@@ -1,5 +1,4 @@
 #include "boot.data.files.hpp"
-
 #include "object.prototypes.hpp"
 #include "logger.hpp"
 #include "dg_scripts.h"
@@ -1274,7 +1273,8 @@ void MobileFile::parse_mobile(const int nr)
 	mob_proto[i].desc = NULL;
 	if ((mob_proto + 1)->get_level() == 0)
 		set_test_data(mob_proto + i);
-
+//	if (!mob_proto[i].proto_script->empty()) // статистика мобов у которых висят тригги
+//		log("MOBTRIG: vnum %d, name %s", nr, mob_proto[i].get_npc_name().c_str());
 	top_of_mobt = i++;
 }
 
