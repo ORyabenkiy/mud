@@ -2737,8 +2737,13 @@ const cast_phrases_t cast_phrase =
 	cast_phrase_t{ "и пусть удача будет нашей спутницей!", "и пусть удача будет нашей спутницей!" }, // клич на удачу
 	cast_phrase_t{ "бей в глаз, не порти шкуру", "бей в глаз, не порти шкуру." }, // клич на дамагу
 	cast_phrase_t{ "...отче Велес, очи отвержеши!", "...надежда тщетна: не упадешь ли от одного взгляда его?" }, // SPELL_MASS_FAILURE
-	cast_phrase_t{ "Заклинати поврещение в сети заскопиены!", "...будет трапеза их сетью им, и мирное пиршество их - западнею." } // SPELL_MASS_NOFLEE
-};
+	cast_phrase_t{ "!для масовки!", "!use mass!" } // 243
+	cast_phrase_t{ "!для масовки!", "!use mass!" } // 244
+	cast_phrase_t{ "!для масовки!", "!use mass!" } // 245   
+	cast_phrase_t{ "!для масовки!", "!use mass!" } // 246
+	cast_phrase_t{ "!для масовки!", "!use mass!" } // 247
+	cast_phrase_t{ "наполнися силою жизни", "... тебе говорю, живи." } // SPELL_HAVY_HEAL    
+}};
 
 typedef std::map<ESpell, std::string> ESpell_name_by_value_t;
 typedef std::map<const std::string, ESpell> ESpell_value_by_name_t;
@@ -2989,6 +2994,12 @@ void init_ESpell_ITEM_NAMES()
 	ESpell_name_by_value[ESpell::SPELL_GROUP_AWARNESS] = "SPELL_GROUP_AWARNESS";
 	ESpell_name_by_value[ESpell::SPELL_MASS_FAILURE] = "SPELL_MASS_FAILURE";
 	ESpell_name_by_value[ESpell::SPELL_MASS_NOFLEE] = "SPELL_MASS_NOFLEE";
+	ESpell_name_by_value[ESpell::SPELL_FIRE_BREATH] = "SPELL_FIRE_BREATH";
+	ESpell_name_by_value[ESpell::SPELL_GAS_BREATH] = "SPELL_GAS_BREATH";
+	ESpell_name_by_value[ESpell::SPELL_FROST_BREATH] = "SPELL_FROST_BREATH";
+	ESpell_name_by_value[ESpell::SPELL_ACID_BREATH] = "SPELL_ACID_BREATH";
+	ESpell_name_by_value[ESpell::SPELL_LIGHTNING_BREATH] = "SPELL_LIGHTNING_BREATH";
+	ESpell_name_by_value[ESpell::SPELL_HAVY_HEAL] = "SPELL_HAVY_HEAL";
 
 	for (const auto& i : ESpell_name_by_value)
 	{

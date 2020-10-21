@@ -5300,6 +5300,10 @@ void mag_assign_spells(void)
 
 	spello(SPELL_LIGHTNING_BREATH, "опаляющее дыхание", "lightning breath",
 		   0, 0, 0, POS_SITTING, TAR_IGNORE, TRUE, MAG_DAMAGE, 3, STYPE_DARK);
+/248
+    spello(SPELL_HAVY_HEAL, "полное исцеление", "hevy heal", 150, 120, 2,
+		   POS_FIGHTING, TAR_CHAR_ROOM | TAR_FIGHT_SELF, FALSE, MAG_POINTS | NPC_DUMMY, 10, STYPE_LIFE);
+   
 // 357
 	spello(SPELL_QUEST, "чары", "quest spell",
 		   55, 40, 1, POS_FIGHTING, TAR_CHAR_ROOM | TAR_NOT_SELF, MTYPE_NEUTRAL, MAG_MANUAL, 1, STYPE_NEUTRAL);

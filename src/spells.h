@@ -393,7 +393,8 @@ enum ESpell: int
  	SPELL_FROST_BREATH = 245,      // магическое дыхание
  	SPELL_ACID_BREATH = 246,       // магическое дыхание
  	SPELL_LIGHTNING_BREATH = 247,  // магическое дыхание	
-	SPELLS_COUNT = 	SPELL_LIGHTNING_BREATH    // Counter corresponds to the last value because we count spells from 1.
+ 	SPELL_HAVY_HEAL = 248,         // полное исцеление	
+	SPELLS_COUNT = 	SPELL_HAVY_HEAL    // Counter corresponds to the last value because we count spells from 1.
 };
 
 class spell_wear_off_msg_t: public std::array<const char*, SPELLS_COUNT + 1>
