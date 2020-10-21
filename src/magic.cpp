@@ -4531,7 +4531,7 @@ int mag_points(int level, CHAR_DATA * ch, CHAR_DATA * victim, int spellnum, int)
 	case SPELL_HEAL:
 	case SPELL_GROUP_HEAL:
 		hit = GET_REAL_MAX_HIT(victim) - GET_HIT(victim);
-		send_to_char("Вы почувствовали себя здоровым.\r\n", victim);
+		send_to_char("Вы почувствовали здоровым.\r\n", victim);
 		break;
 	case SPELL_PATRONAGE:
 		hit = (GET_LEVEL(victim) + GET_REMORT(victim)) * 2;
